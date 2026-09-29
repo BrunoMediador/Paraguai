@@ -2,7 +2,7 @@
 
 Plano para um dia de compras em Ciudad del Este (CDE), atravessando a Ponte da Amizade a pé, com 5 pessoas.
 
-A versão interativa está em [`roteiro-paraguai.html`](roteiro-paraguai.html). Ela tem checklist, calculadora de cota e imposto e links de mapa, e salva as marcações no próprio celular.
+A versão interativa está em [`roteiro-paraguai.html`](roteiro-paraguai.html). Ela tem checklist, total de gastos e links de mapa, e salva as marcações no próprio celular.
 
 > Pesquisado em 29/09/2026. Os preços são o menor valor do [ComprasParaguai](https://www.comprasparaguai.com.br). Os marcados com *(est.)* são estimativas, porque não achei preço publicado. Confira tudo na véspera.
 
@@ -11,7 +11,7 @@ A versão interativa está em [`roteiro-paraguai.html`](roteiro-paraguai.html). 
 - **Comece pela loja mais longe e volte comprando em direção à ponte.** Assim você carrega as sacolas pelo menor trecho possível.
 - Termine no Shopping China e no Shopping Paris, que fecham mais tarde e têm praça de alimentação.
 - **Preço-alvo:** na véspera, anote o menor preço de cada item caro. Para iPhone, anote o preço na Nissei e compare no Jebai Center, a 100 m (Atacado Connect e Mestre Atacado). Compre onde o aparelho **novo e lacrado** estiver mais barato. Se a diferença para a Nissei for menor que ~US$ 30, compre na Nissei, que é revenda autorizada Apple.
-- Vá de **terça a quinta**, chegue às 7h e esteja de volta na Receita até **14h30–15h**.
+- Vá de **terça a quinta**, chegue às 7h e esteja de volta na ponte até **14h30–15h**.
 
 ## Roteiro
 
@@ -24,7 +24,7 @@ A versão interativa está em [`roteiro-paraguai.html`](roteiro-paraguai.html). 
 | 11h30 | **4. Mega Eletrônicos** | Av. Monseñor Rodríguez esq. Itá Ybaté (Ed. Sarah) | Plano C para Apple, o que faltou de eletrônico, cosméticos |
 | 12h15 | **5. Shopping China** (almoço) | Prédio próprio na Av. Dr. Luis María Argaña · todos os dias 7h–20h | Skincare (CeraVe, La Roche-Posay), lanterna de cabeça (camping), kigurumi, óculos |
 | 13h45 | **6. Shopping Paris** (opcional) | Av. Dr. Luis María Argaña casi Eusebio Ayala | Tênis da Letícia: Casa Angela, TL Sports, American Footwear |
-| 14h30 | **Volta** | Aduana → ponte → Receita Federal | Declarar pela e-DBV quem passou de US$ 500 |
+| 14h30 | **Volta** | Aduana → ponte → Foz | Depois das 15h a fila piora muito |
 
 Rota a pé no Google Maps: [abrir](https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Ponte%20da%20Amizade%2C%20Foz%20do%20Igua%C3%A7u&destination=Ponte%20da%20Amizade%2C%20Foz%20do%20Igua%C3%A7u&waypoints=Nissei%20Ciudad%20del%20Este%7CGaleria%20Jebai%20Center%20Ciudad%20del%20Este%7CMonalisa%20Ciudad%20del%20Este%7CMega%20Eletronicos%20Ciudad%20del%20Este%7CShopping%20China%20Ciudad%20del%20Este%7CShopping%20Paris%20Ciudad%20del%20Este)
 
@@ -146,10 +146,7 @@ O Series 9 saiu de linha. Plano B: Series 10 42mm (a partir de US$ 245) ou Serie
 
 ## Pontos de atenção
 
-- **Cota de US$ 500 por pessoa por terra**, que não se soma entre pessoas. Acima disso, o imposto é de 50% sobre o que excedeu, declarado pela e-DBV. Quem não declara e é pego paga mais 50% de multa. Os valores abaixo usam dólar a R$ 5,25:
-  - João: ~US$ 3.380 acima da cota, **~US$ 1.690 de imposto**.
-  - Mãe do João: ~US$ 545 de imposto.
-  - Bruna: ~US$ 370 de imposto. O iPhone 17 Pro sai por ~R$ 6.080 antes do imposto e **passa de R$ 6 mil com o imposto**. Compare com o preço no Brasil.
+- **Bruna (até R$ 6 mil):** com o dólar a R$ 5,27, o iPhone 17 Pro 256GB sai por ~R$ 6.100 (US$ 1.158), no limite. O 16 Pro 128GB sai por ~R$ 5.580 (US$ 1.058).
 - **iPhone 15 Pro Max abaixo de R$ 3 mil é improvável.** O swap mais barato custa US$ 655 (~R$ 3.440), é recondicionado e só aceita eSIM.
 - **Oakley Meta sai mais caro no Paraguai (469+) do que nos EUA (399).**
 - **O iPhone 17 americano (LL/A) é só eSIM.** Confira se o modelo começa com M (novo), consulte o serial em checkcoverage.apple.com, confira o IMEI com `*#06#` e ative na loja.

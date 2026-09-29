@@ -12,7 +12,7 @@
   --line:#d7dfdb;
   --river:#0f6b5c;        /* acento: Rio Paraná */
   --river-soft:#dcefe9;
-  --amber:#b45d09;        /* alerta / imposto */
+  --amber:#b45d09;        /* alerta */
   --amber-soft:#fbead6;
   --ok:#1f7a3a;
   --ok-soft:#dff1e3;
@@ -94,7 +94,7 @@ section{padding-block:36px 8px;display:grid;gap:18px;scroll-margin-top:52px}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:800;font-stretch:85%;text-transform:uppercase;letter-spacing:.04em;background:var(--river);color:var(--bg);text-decoration:none;padding:12px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem}
 .btn.ghost{background:transparent;color:var(--river);border:1.5px solid var(--river)}
 
-/* Lista / cota */
+/* Lista */
 .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
 .field{display:grid;gap:4px}
 .field label{font-size:.8rem;color:var(--muted)}
@@ -104,12 +104,7 @@ section{padding-block:36px 8px;display:grid;gap:18px;scroll-margin-top:52px}
 .person > summary::-webkit-details-marker{display:none}
 .person-name{font-family:var(--f-display);font-weight:800;font-stretch:85%;font-size:1.25rem;text-transform:uppercase}
 .person-sum{font-family:var(--f-mono);font-size:.85rem;text-align:right}
-.bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ok);border-radius:4px}
-.bar i.over{background:var(--amber)}
-.bar s{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.6}
 .status{grid-column:1/-1;font-size:.85rem;color:var(--muted)}
-.status b.over{color:var(--amber)}
 .status b.ok{color:var(--ok)}
 .items{border-top:1px solid var(--line)}
 .item{display:grid;grid-template-columns:28px 1fr auto;gap:4px 10px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:start}
@@ -189,7 +184,6 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     <p class="lede">Um dia de compras atravessando a Ponte da Amizade a pé. A ideia é ir direto à loja mais longe e voltar comprando em direção à ponte, para carregar as sacolas pelo menor trecho possível. O almoço fica nas lojas que fecham mais tarde.</p>
     <div class="facts">
       <span class="fact">Ponte: <b>552 m</b> · 10–15 min</span>
-      <span class="fact">Cota: <b>US$ 500</b>/pessoa por terra</span>
       <span class="fact">Fuso: <b>igual a Brasília</b></span>
       <span class="fact">Voltar até <b>14h30</b></span>
     </div>
@@ -199,7 +193,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     <div class="row">
       <a href="#roteiro" class="on">Roteiro</a>
       <a href="#opcoes">Opções</a>
-      <a href="#lista">Lista e cota</a>
+      <a href="#lista">Lista</a>
       <a href="#lojas">Lojas</a>
       <a href="#dicas">Antes de ir</a>
       <a href="#fontes">Fontes</a>
@@ -216,7 +210,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
 
     <div class="alert">
       <strong>Regra do preço-alvo</strong>
-      <p>Na véspera, veja o menor preço de cada item caro no <a href="https://www.comprasparaguai.com.br" target="_blank" rel="noopener">comprasparaguai.com.br</a> e anote na aba <a href="#lista">Lista e cota</a>. Para iPhone, anote o preço na Nissei e compare no Jebai Center, a 100 m, onde ficam a Atacado Connect e a Mestre Atacado. Compre onde o aparelho <b>novo e lacrado</b> estiver mais barato. Se a diferença para a Nissei for menor que uns US$ 30, compre na Nissei, que é revenda autorizada Apple.</p>
+      <p>Na véspera, veja o menor preço de cada item caro no <a href="https://www.comprasparaguai.com.br" target="_blank" rel="noopener">comprasparaguai.com.br</a> e anote na aba <a href="#lista">Lista</a>. Para iPhone, anote o preço na Nissei e compare no Jebai Center, a 100 m, onde ficam a Atacado Connect e a Mestre Atacado. Compre onde o aparelho <b>novo e lacrado</b> estiver mais barato. Se a diferença para a Nissei for menor que uns US$ 30, compre na Nissei, que é revenda autorizada Apple.</p>
     </div>
 
     <div class="cmp">
@@ -252,7 +246,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     <div class="sec-head">
       <span class="eyebrow">Os links que vocês pesquisaram + alternativas</span>
       <h2>Opções por produto</h2>
-      <p>Para cada produto do João: loja, endereço, preço e link, para vocês decidirem. Onde está "ver no link", o site da loja não abriu na pesquisa. Confira na véspera e anote o preço na aba <a href="#lista">Lista e cota</a>.</p>
+      <p>Para cada produto do João: loja, endereço, preço e link, para vocês decidirem. Onde está "ver no link", o site da loja não abriu na pesquisa. Confira na véspera e anote o preço na aba <a href="#lista">Lista</a>.</p>
     </div>
     <div id="options" style="display:grid;gap:18px"></div>
   </section>
@@ -260,13 +254,9 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
   <!-- LISTA -->
   <section id="lista">
     <div class="sec-head">
-      <span class="eyebrow">Checklist + calculadora da Receita</span>
-      <h2>Lista e cota</h2>
+      <span class="eyebrow">Checklist e total de gastos</span>
+      <h2>Lista</h2>
       <p>Os preços vêm preenchidos com o menor valor encontrado no ComprasParaguai (set/2026). Onde está escrito <span style="color:var(--amber);font-weight:600">estimativa</span>, não achei preço publicado. Troque pelo preço real na loja e a conta se refaz sozinha. Marque o quadrado quando comprar. Tudo fica salvo só neste celular.</p>
-    </div>
-    <div class="alert">
-      <strong>A cota é de US$ 500 por pessoa e não se junta</strong>
-      <p>Passou disso, a Receita cobra 50% sobre o que excedeu, declarado pela <a href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante" target="_blank" rel="noopener">e-DBV</a>. Quem não declara e é pego paga mais 50% de multa. Um iPhone de US$ 1.240 sozinho já gera cerca de US$ 370 de imposto. O limite é de até 3 unidades iguais por pessoa.</p>
     </div>
     <div class="toolbar">
       <div class="field">
@@ -327,12 +317,10 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
         </ul>
       </div>
       <div class="tip warn">
-        <h3>Volta pela Receita</h3>
+        <h3>Volta pela ponte</h3>
         <ul>
-          <li>Passou de US$ 500? Preencha a <b>e-DBV</b> antes (pode ser até 30 dias antes) e vá pelo canal "bens a declarar".</li>
-          <li>Guarde todas as notas. A cota vale uma vez a cada 30 dias.</li>
-          <li>Fila pior: fim de tarde, sábado e feriado no Brasil (12/out, 2/nov, 15/nov, 20/nov). Volte até 14h30–15h.</li>
-          <li>A partir de outubro de 2026 a Receita testa biometria na faixa de pedestres ("Fronteira Inteligente"). Por enquanto não é obrigatório.</li>
+          <li>A fila piora no fim da tarde, no sábado e em feriado no Brasil (12/out, 2/nov, 15/nov, 20/nov). Volte até 14h30–15h.</li>
+          <li>Guarde todas as notas (<i>factura</i>): elas valem como garantia.</li>
         </ul>
       </div>
       <div class="tip">
@@ -373,7 +361,6 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
       <a href="https://primeshop.com.py/shop/eletronicos/tablet/apple-ipad-air-5th-generation-64gb-wi-fi-space-grey-mm9c3ll-a-model-a2588/" target="_blank" rel="noopener">Prime Shop: iPad Air 5 MM9C3LL/A</a>
       <a href="https://www.comprasparaguai.com.br/busca/?q=Ray+ban+meta" target="_blank" rel="noopener">ComprasParaguai: Ray-Ban Meta</a>
       <a href="https://www.comprasparaguai.com.br/busca/?q=oakley+meta" target="_blank" rel="noopener">ComprasParaguai: Oakley Meta</a>
-      <a href="https://blog.comprasparaguai.com.br/cota-compras-paraguai-2026-regras-completas-receita-federal/" target="_blank" rel="noopener">Cota de compras 2026: regras da Receita Federal</a>
       <a href="https://www.perfilnews.com.br/2025/12/09/shopping-china-inaugura-a-maior-loja-de-ciudad-del-este-e-da-fronteira/" target="_blank" rel="noopener">Novo prédio do Shopping China (dez/2025)</a>
       <a href="https://nissei.com/br/donde-estamos" target="_blank" rel="noopener">Nissei: endereço</a>
       <a href="https://atacadoconnect.com/nossa-loja" target="_blank" rel="noopener">Atacado Connect: loja</a>
@@ -381,12 +368,11 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
       <a href="https://blog.livareviagens.com.br/loja-monalisa-paraguai/" target="_blank" rel="noopener">Monalisa: endereço e horário</a>
       <a href="https://blog.livareviagens.com.br/ponte-da-amizade-foz-do-iguacu-pr/" target="_blank" rel="noopener">Ponte da Amizade: documentos e travessia</a>
       <a href="https://www.hoy.com.py/nacionales/2026/08/21/feriado-del-29-de-septiembre-se-adelanta-al-lunes-28" target="_blank" rel="noopener">Feriado de Boquerón passou para 28/09</a>
-      <a href="https://www.radioculturafoz.com.br/2026/09/27/fronteira-inteligente-biometria-ponte-da-amizade" target="_blank" rel="noopener">Fronteira Inteligente na Ponte da Amizade</a>
       <a href="https://www.lojasparaguai.com.br/lojas-no-paraguai/ciudad-del-este/tenis-e-artigos-esportivos" target="_blank" rel="noopener">Lojas de tênis em CDE</a>
     </div>
   </section>
 
-  <footer>Os preços são referências de pesquisa, não orçamentos. A conta de imposto é uma estimativa de 50% sobre o que passar de US$ 500 por pessoa.</footer>
+  <footer>Os preços são referências de pesquisa, não orçamentos. Confira tudo na véspera.</footer>
 </div>
 
 <script>
@@ -436,10 +422,10 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
       buy:[["Letícia","Tênis: Casa Angela (Nike, Adidas, Puma, Asics; aceita Pix), TL Sports (New Balance, Mizuno, Hoka), American Footwear (2º andar)"]],
       notes:["Não achei nenhuma loja chamada \"My Shoes\" em CDE. As mais parecidas são a Casa Angela e a Center Shoes. Se tiver o Instagram da My Shoes, dá para confirmar."],
       q:"Shopping Paris Ciudad del Este" },
-    { n:"VOLTA", walk:true, time:"14h30 – 15h30", title:"Volta pela ponte e Receita Federal",
-      addr:"Aduana paraguaia (~300 m) → ponte → Receita Federal",
-      chips:["Notas fiscais à mão","e-DBV se passou de US$ 500"],
-      notes:["Quem passou da cota vai pelo canal \"bens a declarar\". Depois das 15h a fila de entrada no Brasil piora muito."],
+    { n:"VOLTA", walk:true, time:"14h30 – 15h30", title:"Volta pela ponte",
+      addr:"Aduana paraguaia (~300 m) → ponte → Foz",
+      chips:["Notas fiscais à mão"],
+      notes:["Depois das 15h a fila de entrada no Brasil piora muito."],
       q:"Aduana Ciudad del Este Puente de la Amistad" }
   ];
 
@@ -501,7 +487,6 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
       ["Skincare",80,"Shopping China / Mega",true]
     ]}
   ];
-  const QUOTA = 500;
   const KEY = "cde-roteiro-v1";
   let state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
@@ -527,7 +512,6 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
         <summary>
           <span class="person-name">${p.name}</span>
           <span class="person-sum" data-sum="${p.id}"></span>
-          <span class="bar"><i data-bar="${p.id}"></i><s data-mark="${p.id}"></s></span>
           <span class="status" data-status="${p.id}"></span>
         </summary>
         <div class="items">
@@ -554,32 +538,26 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
 
   function update(){
     const fx = parseFloat(fxEl.value) || 5.27;
-    let gTotal=0, gTax=0, gDone=0, gCount=0;
+    let gTotal=0, gDone=0, gCount=0;
     PEOPLE.forEach(p=>{
-      let total=0;
+      let total=0, n=0, done=0;
       p.items.forEach((it,i)=>{
         const row = peopleEl.querySelector(`[data-row="${itemKey(p,i)}"]`);
         row.classList.toggle("done", isDone(p,i));
         row.classList.toggle("skip", isSkip(p,i));
-        if (!isSkip(p,i)) { total += +priceOf(p,i)||0; gCount++; if (isDone(p,i)) gDone++; }
+        if (!isSkip(p,i)) { total += +priceOf(p,i)||0; n++; gCount++; if (isDone(p,i)) { done++; gDone++; } }
       });
-      const over = Math.max(0,total-QUOTA), tax = over*0.5;
-      gTotal+=total; gTax+=tax;
+      gTotal+=total;
       peopleEl.querySelector(`[data-sum="${p.id}"]`).innerHTML = `${usd(total)}<br><span style="color:var(--muted)">${brl(total*fx)}</span>`;
-      const scale = Math.max(total, QUOTA*1.25);
-      const bar = peopleEl.querySelector(`[data-bar="${p.id}"]`);
-      bar.style.width = (total/scale*100)+"%"; bar.classList.toggle("over", over>0);
-      peopleEl.querySelector(`[data-mark="${p.id}"]`).style.left = (QUOTA/scale*100)+"%";
-      peopleEl.querySelector(`[data-status="${p.id}"]`).innerHTML = over>0
-        ? `<b class="over">${usd(over)} acima da cota</b> · imposto estimado ${usd(tax)} (${brl(tax*fx)}) · total com imposto ${brl((total+tax)*fx)}`
-        : `<b class="ok">Dentro da cota</b> · sobram ${usd(QUOTA-total)}`;
+      peopleEl.querySelector(`[data-status="${p.id}"]`).innerHTML = done===n
+        ? `<b class="ok">Tudo comprado</b>`
+        : `${done} de ${n} itens comprados`;
     });
     document.getElementById("totals").innerHTML = `
       <span class="eyebrow">Grupo todo · ${gDone} de ${gCount} itens comprados</span>
       <div class="totals-grid">
         <div><span class="addr">Compras</span><span class="big">${usd(gTotal)}</span><span class="addr">${brl(gTotal*fx)}</span></div>
-        <div><span class="addr">Imposto estimado</span><span class="big amber">${usd(gTax)}</span><span class="addr">${brl(gTax*fx)}</span></div>
-        <div><span class="addr">Total com imposto</span><span class="big">${brl((gTotal+gTax)*fx)}</span><span class="addr">Leve em espécie ~${usd(gTotal*1.05)} com folga</span></div>
+        <div><span class="addr">Dólar em espécie para levar</span><span class="big">${usd(gTotal*1.05)}</span><span class="addr">total + 5% de folga</span></div>
       </div>`;
   }
 
@@ -700,9 +678,8 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     "RG com menos de 10 anos ou passaporte para cada pessoa (CNH não vale)",
     "Trocar dólar em espécie em casa de câmbio (total da lista + ~5% de folga)",
     "Avisar o banco sobre compras no exterior e levar um cartão Wise ou Nomad de reserva",
-    "Preencher a e-DBV para quem vai passar de US$ 500",
     "Celular carregado, mochila com zíper e sacolas extras",
-    "Ver se não tem operação-padrão da Receita na ponte (notícias de Foz na véspera)"
+    "Ver nas notícias de Foz, na véspera, se a ponte está com fila grande"
   ];
   const prepEl = document.getElementById("prep");
   prepEl.innerHTML = PREP.map((t,i)=>`<label><input type="checkbox" id="prep-${i}" data-prep="${i}"> <span>${t}</span></label>`).join("");
