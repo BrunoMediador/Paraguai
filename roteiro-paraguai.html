@@ -1,0 +1,590 @@
+<title>Roteiro Ciudad del Este</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: guia de bolso para celular — cabeçalho fixo com abas, seções empilhadas, paradas numeradas porque a ordem é o roteiro real */
+:root{
+  --bg:#f3f5f2;
+  --surface:#ffffff;
+  --ink:#16201d;
+  --muted:#5b6b66;
+  --line:#d7dfdb;
+  --river:#0f6b5c;        /* acento: Rio Paraná */
+  --river-soft:#dcefe9;
+  --amber:#b45d09;        /* alerta / imposto */
+  --amber-soft:#fbead6;
+  --ok:#1f7a3a;
+  --ok-soft:#dff1e3;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1513;--surface:#172120;--ink:#e6eeeb;--muted:#9aaba6;--line:#2a3835;
+    --river:#4fc3a8;--river-soft:#16332d;--amber:#f0a14a;--amber-soft:#3a2812;
+    --ok:#6fd08a;--ok-soft:#17321f;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1513;--surface:#172120;--ink:#e6eeeb;--muted:#9aaba6;--line:#2a3835;
+  --river:#4fc3a8;--river-soft:#16332d;--amber:#f0a14a;--amber-soft:#3a2812;
+  --ok:#6fd08a;--ok-soft:#17321f;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+a{color:var(--river)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--river);outline-offset:2px;border-radius:4px}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.1;margin:0}
+h1{font-size:clamp(2rem,7vw,3.1rem);font-weight:900;font-stretch:72%;letter-spacing:-.01em;text-transform:uppercase}
+h2{font-size:1.6rem;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:1.15rem;font-weight:700;font-stretch:90%}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Cabeçalho */
+header.hero{padding-block:28px 18px;display:grid;gap:12px}
+.hero .lede{color:var(--muted);max-width:62ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{font-family:var(--f-mono);font-size:.78rem;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.fact b{color:var(--river)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding-inline:16px}
+nav.tabs .row{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .row::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;font-family:var(--f-display);font-weight:700;font-stretch:85%;text-transform:uppercase;letter-spacing:.04em;font-size:.9rem;text-decoration:none;color:var(--muted);padding:12px 10px;border-bottom:3px solid transparent}
+nav.tabs a:hover{color:var(--ink)}
+nav.tabs a.on{color:var(--river);border-bottom-color:var(--river)}
+
+section{padding-block:36px 8px;display:grid;gap:18px;scroll-margin-top:52px}
+.sec-head{display:grid;gap:6px}
+.sec-head p{color:var(--muted);max-width:65ch}
+
+/* Alertas */
+.alert{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--amber-soft);padding:12px 14px;border-radius:6px;display:grid;gap:4px}
+.alert.info{border-left-color:var(--river);background:var(--river-soft)}
+.alert strong{font-family:var(--f-display);font-stretch:90%;font-size:1.02rem}
+
+/* Linha do tempo */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.stop{display:grid;grid-template-columns:52px 1fr;gap:14px;position:relative}
+.stop::before{content:"";position:absolute;left:25px;top:0;bottom:0;width:2px;background:var(--line)}
+.stop:first-child::before{top:26px}
+.stop:last-child::before{bottom:calc(100% - 26px)}
+.pin{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:var(--surface);border:2px solid var(--river);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:1.3rem;color:var(--river)}
+.stop.walk .pin{border-style:dashed;font-size:.8rem;font-family:var(--f-mono);font-weight:700}
+.stop-body{padding-block:4px 26px;display:grid;gap:8px;min-width:0}
+.stop-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.time{font-family:var(--f-mono);font-size:.85rem;font-weight:700;color:var(--river)}
+.addr{color:var(--muted);font-size:.93rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.8rem;padding:2px 9px;border-radius:999px;background:var(--river-soft);color:var(--ink);border:1px solid transparent}
+.chip.warn{background:var(--amber-soft)}
+.buy{margin:0;padding-left:18px;display:grid;gap:2px}
+.buy li::marker{color:var(--river)}
+.who{font-weight:700}
+.maplink{font-size:.88rem;font-weight:600}
+.squads{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.squad{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface);display:grid;gap:4px;min-width:0}
+.squad h4{margin:0;font-family:var(--f-display);font-stretch:85%;text-transform:uppercase;font-size:.9rem;letter-spacing:.04em;color:var(--river)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:800;font-stretch:85%;text-transform:uppercase;letter-spacing:.04em;background:var(--river);color:var(--bg);text-decoration:none;padding:12px 16px;border-radius:8px;border:0;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--river);border:1.5px solid var(--river)}
+
+/* Lista / cota */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.field{display:grid;gap:4px}
+.field label{font-size:.8rem;color:var(--muted)}
+.field input{font-family:var(--f-mono);font-size:1rem;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);width:120px}
+.person{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.person > summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.person > summary::-webkit-details-marker{display:none}
+.person-name{font-family:var(--f-display);font-weight:800;font-stretch:85%;font-size:1.25rem;text-transform:uppercase}
+.person-sum{font-family:var(--f-mono);font-size:.85rem;text-align:right}
+.bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ok);border-radius:4px}
+.bar i.over{background:var(--amber)}
+.bar s{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.6}
+.status{grid-column:1/-1;font-size:.85rem;color:var(--muted)}
+.status b.over{color:var(--amber)}
+.status b.ok{color:var(--ok)}
+.items{border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:28px 1fr auto;gap:4px 10px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:start}
+.item:last-child{border-bottom:0}
+.item input[type=checkbox]{width:20px;height:20px;margin-top:2px;accent-color:var(--river)}
+.item .name{font-weight:600}
+.item.done .name{text-decoration:line-through;color:var(--muted)}
+.item .meta{font-size:.84rem;color:var(--muted)}
+.item .meta .est{color:var(--amber);font-weight:600}
+.price{display:flex;align-items:center;gap:4px;font-family:var(--f-mono);font-size:.9rem}
+.price input{width:72px;font-family:var(--f-mono);font-size:.9rem;padding:4px 6px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);text-align:right}
+.item.skip{opacity:.55}
+.opt{font-size:.72rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border:1px solid var(--line);border-radius:4px;margin-left:4px;color:var(--muted)}
+.totals{border:2px solid var(--ink);border-radius:10px;padding:14px 16px;display:grid;gap:10px;background:var(--surface)}
+.totals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.totals-grid div{display:grid;gap:2px}
+.big{font-family:var(--f-mono);font-weight:700;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.big.amber{color:var(--amber)}
+
+/* Lojas */
+.stores{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.store{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--surface);display:grid;gap:6px;align-content:start;min-width:0}
+.store .kv{font-size:.88rem;display:grid;grid-template-columns:70px 1fr;gap:2px 8px}
+.store .kv dt{color:var(--muted)}
+.store .kv dd{margin:0;min-width:0}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:var(--river-soft);color:var(--river);margin-right:4px}
+.tag.warn{background:var(--amber-soft);color:var(--amber)}
+
+/* Dicas */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tip{border-top:3px solid var(--river);padding-top:10px;display:grid;gap:6px;min-width:0}
+.tip ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.tip.warn{border-top-color:var(--amber)}
+.check{display:grid;gap:6px}
+.check label{display:flex;gap:10px;align-items:flex-start}
+.check input{width:20px;height:20px;accent-color:var(--river);flex:none;margin-top:2px}
+.sources{font-size:.85rem;color:var(--muted);display:grid;gap:4px}
+.sources a{word-break:break-word}
+footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (max-width:480px){
+  .stop{grid-template-columns:40px 1fr;gap:10px}
+  .pin{width:40px;height:40px;font-size:1.05rem}
+  .stop::before{left:19px}
+  .stop:first-child::before{top:20px}
+  .item{padding:10px 12px}
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Foz do Iguaçu → Ciudad del Este · a pé · 5 pessoas</span>
+    <h1>Roteiro de compras em Ciudad del Este</h1>
+    <p class="lede">Um dia de compras atravessando a Ponte da Amizade a pé. A ideia é ir direto à loja mais longe e voltar comprando em direção à ponte, para carregar as sacolas pelo menor trecho possível. O almoço fica nas lojas que fecham mais tarde.</p>
+    <div class="facts">
+      <span class="fact">Ponte: <b>552 m</b> · 10–15 min</span>
+      <span class="fact">Cota: <b>US$ 500</b>/pessoa por terra</span>
+      <span class="fact">Fuso: <b>igual a Brasília</b></span>
+      <span class="fact">Voltar até <b>14h30</b></span>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <div class="row">
+      <a href="#roteiro" class="on">Roteiro</a>
+      <a href="#lista">Lista e cota</a>
+      <a href="#lojas">Lojas</a>
+      <a href="#dicas">Antes de ir</a>
+      <a href="#fontes">Fontes</a>
+    </div>
+  </nav>
+
+  <!-- ROTEIRO -->
+  <section id="roteiro">
+    <div class="sec-head">
+      <span class="eyebrow">O dia, parada por parada</span>
+      <h2>Roteiro a pé</h2>
+      <p>Cerca de 2,5 a 3 km no total. Chegue cedo: as lojas de rua abrem por volta das 6h30–7h30 e fecham entre 15h e 16h30. Vá de terça a quinta, que são os dias mais tranquilos.</p>
+    </div>
+
+    <div class="alert">
+      <strong>Regra do preço-alvo</strong>
+      <p>Na véspera, veja o menor preço de cada item caro no <a href="https://www.comprasparaguai.com.br" target="_blank" rel="noopener">comprasparaguai.com.br</a> e anote na aba <a href="#lista">Lista e cota</a>. Na Nissei (revenda autorizada Apple), se o preço estiver até uns 3% acima do alvo, compre ali mesmo: a garantia compensa. Se estiver bem mais caro, passe para a Cellshop e a Mega, que estão no caminho de volta.</p>
+    </div>
+
+    <p><a class="btn" id="routeBtn" href="#" target="_blank" rel="noopener">Abrir a rota a pé no Google Maps</a></p>
+
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <!-- LISTA -->
+  <section id="lista">
+    <div class="sec-head">
+      <span class="eyebrow">Checklist + calculadora da Receita</span>
+      <h2>Lista e cota</h2>
+      <p>Os preços vêm preenchidos com o menor valor encontrado no ComprasParaguai (set/2026). Onde está escrito <span style="color:var(--amber);font-weight:600">estimativa</span>, não achei preço publicado. Troque pelo preço real na loja e a conta se refaz sozinha. Marque o quadrado quando comprar. Tudo fica salvo só neste celular.</p>
+    </div>
+    <div class="alert">
+      <strong>A cota é de US$ 500 por pessoa e não se junta</strong>
+      <p>Passou disso, a Receita cobra 50% sobre o que excedeu, declarado pela <a href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/viagens-internacionais/guia-do-viajante" target="_blank" rel="noopener">e-DBV</a>. Quem não declara e é pego paga mais 50% de multa. Um iPhone de US$ 1.240 sozinho já gera cerca de US$ 370 de imposto. O limite é de até 3 unidades iguais por pessoa.</p>
+    </div>
+    <div class="toolbar">
+      <div class="field">
+        <label for="fx">Dólar hoje (R$)</label>
+        <input id="fx" type="number" step="0.01" min="1" value="5.25" inputmode="decimal">
+      </div>
+      <button class="btn ghost" id="resetBtn" type="button">Voltar aos preços da pesquisa</button>
+    </div>
+    <p class="addr" id="resetMsg" hidden>Preços e marcações voltaram ao original.</p>
+    <div id="people" style="display:grid;gap:12px"></div>
+    <div class="totals" id="totals"></div>
+  </section>
+
+  <!-- LOJAS -->
+  <section id="lojas">
+    <div class="sec-head">
+      <span class="eyebrow">Onde cada coisa está</span>
+      <h2>Lojas</h2>
+      <p>Só lojas grandes, conhecidas, que emitem nota (<i>factura</i>). Nenhuma delas tem nota avaliada no Reclame Aqui; as observações abaixo são o que achei de reputação. Os tempos a pé são estimados a partir da Aduana paraguaia.</p>
+    </div>
+    <div class="stores" id="stores"></div>
+  </section>
+
+  <!-- DICAS -->
+  <section id="dicas">
+    <div class="sec-head">
+      <span class="eyebrow">Checklist da véspera e regras da fronteira</span>
+      <h2>Antes de ir</h2>
+    </div>
+
+    <div class="check" id="prep"></div>
+
+    <div class="tips">
+      <div class="tip">
+        <h3>Documentos</h3>
+        <ul>
+          <li>RG original com <b>menos de 10 anos</b> ou passaporte válido. <b>A CNH não vale</b> para atravessar a pé.</li>
+          <li>Ficando só na zona comercial de CDE, não precisa de carimbo da Polícia Federal.</li>
+          <li>Mostre o RG no caixa: o regime de "turismo de compras" reduz o IVA embutido no preço.</li>
+        </ul>
+      </div>
+      <div class="tip">
+        <h3>Dinheiro</h3>
+        <ul>
+          <li><b>Dólar em espécie dá o melhor preço.</b> Troque numa casa de câmbio em Foz.</li>
+          <li>Cartão brasileiro: IOF de ~3,5%. Wise ou Nomad: ~1,1%. Escolha sempre cobrar em moeda local, nunca em reais na maquininha.</li>
+          <li>Pix é aceito em várias lojas, mas o câmbio costuma ser um pouco pior.</li>
+          <li>Pagar em reais em espécie: a loja usa o câmbio dela, que é pior.</li>
+        </ul>
+      </div>
+      <div class="tip warn">
+        <h3>iPhone: o que conferir</h3>
+        <ul>
+          <li><b>Versão americana (LL/A) do 17 é só eSIM</b>, sem gaveta de chip. As operadoras daqui aceitam eSIM. Se quiser chip físico, peça versão indiana (HN/A), europeia ou ZA/A.</li>
+          <li>Em Ajustes › Geral › Sobre, o modelo começando com <b>M</b> é novo. <b>F</b> é recondicionado, <b>N</b> é swap.</li>
+          <li>Consulte o número de série em <a href="https://checkcoverage.apple.com" target="_blank" rel="noopener">checkcoverage.apple.com</a>: a garantia tem que estar "não ativada" ou começar hoje.</li>
+          <li>Disque <span class="mono">*#06#</span>: o IMEI tem que bater com a caixa. Ative o aparelho ainda na loja e confira se a caixa está lacrada e pesada.</li>
+        </ul>
+      </div>
+      <div class="tip warn">
+        <h3>Volta pela Receita</h3>
+        <ul>
+          <li>Passou de US$ 500? Preencha a <b>e-DBV</b> antes (pode ser até 30 dias antes) e vá pelo canal "bens a declarar".</li>
+          <li>Guarde todas as notas. A cota vale uma vez a cada 30 dias.</li>
+          <li>Fila pior: fim de tarde, sábado e feriado no Brasil (12/out, 2/nov, 15/nov, 20/nov). Volte até 14h30–15h.</li>
+          <li>A partir de outubro de 2026 a Receita testa biometria na faixa de pedestres ("Fronteira Inteligente"). Por enquanto não é obrigatório.</li>
+        </ul>
+      </div>
+      <div class="tip">
+        <h3>Segurança</h3>
+        <ul>
+          <li>Celular no bolso da frente e mochila na frente do corpo na ponte e nas calçadas.</li>
+          <li>Ignore vendedores de rua, "guias" e galerias pequenas. Compre só dentro das lojas grandes.</li>
+          <li>Combine em qual loja cada grupo está. O ponto de encontro fixo é a praça de alimentação do Shopping China.</li>
+        </ul>
+      </div>
+      <div class="tip">
+        <h3>Transporte e comida</h3>
+        <ul>
+          <li>Estacionamento em Foz: Vila Portes, ao lado da Aduana brasileira (ex.: Rua Oswaldo Cruz). Confira o horário de fechamento.</li>
+          <li>Uber só deixa na ponte, do lado brasileiro. Em CDE funciona Bolt; mototáxi, combine o preço antes.</li>
+          <li>Almoço: praça de alimentação do Shopping China (Madero) ou do 4º andar do Shopping Paris. O Monalisa tem bistrô no último andar.</li>
+          <li>Power bank de 50.000 mAh (~185 Wh) <b>não embarca em avião</b> (limite de 160 Wh). Por terra, tudo bem.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="fontes">
+    <div class="sec-head">
+      <span class="eyebrow">Pesquisado em 29/09/2026</span>
+      <h2>Fontes</h2>
+      <p>Preços e horários mudam. Confira no ComprasParaguai e no Instagram ou WhatsApp da loja na véspera.</p>
+    </div>
+    <div class="sources">
+      <a href="https://www.comprasparaguai.com.br/celular-apple-iphone-17-pro-max-512gb_64042/" target="_blank" rel="noopener">ComprasParaguai: iPhone 17 Pro Max 512GB</a>
+      <a href="https://www.comprasparaguai.com.br/celular-apple-iphone-17-pro-max-256gb_64041/" target="_blank" rel="noopener">ComprasParaguai: iPhone 17 Pro Max 256GB</a>
+      <a href="https://www.comprasparaguai.com.br/celular-apple-iphone-17-pro-256gb_63989/" target="_blank" rel="noopener">ComprasParaguai: iPhone 17 Pro 256GB</a>
+      <a href="https://www.comprasparaguai.com.br/tablet-apple-ipad-air-2025-128gb-11_59308/" target="_blank" rel="noopener">ComprasParaguai: iPad Air M3 11"</a>
+      <a href="https://www.comprasparaguai.com.br/busca/?q=Ray+ban+meta" target="_blank" rel="noopener">ComprasParaguai: Ray-Ban Meta</a>
+      <a href="https://www.comprasparaguai.com.br/busca/?q=oakley+meta" target="_blank" rel="noopener">ComprasParaguai: Oakley Meta</a>
+      <a href="https://blog.comprasparaguai.com.br/cota-compras-paraguai-2026-regras-completas-receita-federal/" target="_blank" rel="noopener">Cota de compras 2026: regras da Receita Federal</a>
+      <a href="https://www.perfilnews.com.br/2025/12/09/shopping-china-inaugura-a-maior-loja-de-ciudad-del-este-e-da-fronteira/" target="_blank" rel="noopener">Novo prédio do Shopping China (dez/2025)</a>
+      <a href="https://nissei.com/br/donde-estamos" target="_blank" rel="noopener">Nissei: endereço</a>
+      <a href="https://atacadoconnect.com/nossa-loja" target="_blank" rel="noopener">Atacado Connect: loja</a>
+      <a href="https://blog.livareviagens.com.br/mega-eletronicos-paraguai/" target="_blank" rel="noopener">Mega Eletrônicos: endereço e horário</a>
+      <a href="https://blog.livareviagens.com.br/loja-monalisa-paraguai/" target="_blank" rel="noopener">Monalisa: endereço e horário</a>
+      <a href="https://blog.livareviagens.com.br/ponte-da-amizade-foz-do-iguacu-pr/" target="_blank" rel="noopener">Ponte da Amizade: documentos e travessia</a>
+      <a href="https://www.hoy.com.py/nacionales/2026/08/21/feriado-del-29-de-septiembre-se-adelanta-al-lunes-28" target="_blank" rel="noopener">Feriado de Boquerón passou para 28/09</a>
+      <a href="https://www.radioculturafoz.com.br/2026/09/27/fronteira-inteligente-biometria-ponte-da-amizade" target="_blank" rel="noopener">Fronteira Inteligente na Ponte da Amizade</a>
+      <a href="https://www.lojasparaguai.com.br/lojas-no-paraguai/ciudad-del-este/tenis-e-artigos-esportivos" target="_blank" rel="noopener">Lojas de tênis em CDE</a>
+    </div>
+  </section>
+
+  <footer>Os preços são referências de pesquisa, não orçamentos. A conta de imposto é uma estimativa de 50% sobre o que passar de US$ 500 por pessoa.</footer>
+</div>
+
+<script>
+(function(){
+  const maps = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+
+  // ---------- Paradas ----------
+  const STOPS = [
+    { n:"IDA", walk:true, time:"7h00 – 7h30", title:"Travessia da Ponte da Amizade",
+      addr:"Estacione em Vila Portes (Foz), ao lado da Aduana brasileira",
+      chips:["RG < 10 anos ou passaporte","Dólar em espécie","Preços-alvo anotados"],
+      notes:["São 552 m de ponte, 10–15 min a pé pela calçada lateral.","Na Aduana paraguaia, siga em frente pela Av. Monseñor Rodríguez e depois pela Av. Carlos Antonio López até a Av. Adrián Jara (~800 m, 10–12 min). Vamos começar pela loja mais longe."],
+      q:"Ponte da Amizade Foz do Iguaçu" },
+    { n:"1", time:"7h40 – 9h00", title:"Nissei (Shopping Hijazi)",
+      addr:"Av. Adrián Jara esq. Regimiento Piribebuy · seg–sáb 6h30–15h45",
+      chips:["Revenda autorizada Apple","Garantia de 1 ano"],
+      buy:[["Todos","iPhones: 17 Pro Max 512GB (João), 17 Pro Max 256GB (mãe do João), 17 Pro ou 16 Pro (Bruna), se estiver no preço-alvo"],["João","iPad, Apple Watch, Ray-Ban Meta Gen 2"],["Bruno","Oakley Meta HSTN (compare com a Monalisa e o Shopping China)"],["Mãe do João","Perfume: veja o preço aqui para comparar"]],
+      q:"Nissei Ciudad del Este" },
+    { n:"2", time:"9h00 – 10h15", title:"Quarteirão da Adrián Jara: grupo dividido",
+      addr:"Galería Jebai Center · Lai Lai Center · Elegância Company · tudo a ~100 m da Nissei",
+      squads:[
+        ["Grupo Tech: João e Bruno",["Atacado Connect (Jebai, 3º–4º andar): power bank 50.000, mouse Bluetooth, fone in-ear, mouse pad 1 m, capinhas e películas","Visão VIP (Lai Lai, 4º andar): Asus Vivobook Pro 15","Mobile Zone (Jebai, 3º): iPhone 15 Pro Max só se sair abaixo de R$ 3 mil (Bruno)","Smartwatch custo-benefício (Bruno)"]],
+        ["Grupo Beleza: mãe do João, Letícia e Bruna",["Elegância Company (Adrián Jara esq. Abay, Ed. Victoria): cabelo (Kérastase), maquiagem, perfume","Aroma Store (Jebai, sala 3060): linhas de cabelo","Anotem os preços de skincare para comparar com o Shopping China"]]
+      ],
+      notes:["Reencontro às 10h15 na porta da Nissei."],
+      q:"Galeria Jebai Center Ciudad del Este" },
+    { n:"3", time:"10h30 – 11h30", title:"Monalisa + Cellshop (mesma esquina)",
+      addr:"Av. Monseñor Rodríguez esq. Carlos Antonio López · Monalisa 7h30–16h30 · Cellshop 6h30–17h",
+      chips:["Perfumes de luxo","Óculos com promoções de até 50%"],
+      buy:[["Mãe do João","Perfume e Ray-Ban feminino (Monalisa)"],["Bruno","Oakley Meta, se aqui estiver melhor"],["Todos","Cellshop: plano B para iPhone se a Nissei estava cara, e capinhas"]],
+      q:"Monalisa Ciudad del Este" },
+    { n:"4", time:"11h30 – 12h15", title:"Mega Eletrônicos (Edificio Sarah)",
+      addr:"Av. Monseñor Rodríguez esq. Itá Ybaté, prédio espelhado de 12 andares · seg–sex 7h–16h30 · sáb até 16h",
+      chips:["Plano C para Apple","Tem setor de cosméticos"],
+      buy:[["Todos","O que faltou de eletrônico: comparar o último preço de iPhone, smartwatch e fone"],["Bruna e Letícia","Olhar a seção de skincare"]],
+      q:"Mega Eletronicos Ciudad del Este" },
+    { n:"5", time:"12h15 – 13h45", title:"Shopping China: almoço + beleza + miudezas",
+      addr:"Prédio próprio de 9 andares na Av. Dr. Luis María Argaña, ao lado do Shopping Paris · todos os dias 7h–20h",
+      chips:["Ponto de encontro","Almoço (Madero)","Aberto até tarde"],
+      buy:[["Letícia, Bruna e mãe do João","Skincare: CeraVe, La Roche-Posay e outras"],["Bruno","Lanterna de cabeça (setor de camping e pesca)"],["João","Pijama kigurumi (setor de roupas e brinquedos), mouse pad, o que faltou"],["Todos","Ray-Ban e Oakley, se ainda não comprou"]],
+      notes:["Atravesse a Av. San Blas com cuidado. A Luis María Argaña fica do lado esquerdo de quem sai da ponte."],
+      q:"Shopping China Ciudad del Este" },
+    { n:"6", time:"13h45 – 14h30", title:"Shopping Paris: tênis",
+      addr:"Av. Dr. Luis María Argaña casi Eusebio Ayala · seg–sáb 7h–22h",
+      chips:["Opcional","Tênis de primeira linha"],
+      buy:[["Letícia","Tênis: Casa Angela (Nike, Adidas, Puma, Asics; aceita Pix), TL Sports (New Balance, Mizuno, Hoka), American Footwear (2º andar)"]],
+      notes:["Não achei nenhuma loja chamada \"My Shoes\" em CDE. As mais parecidas são a Casa Angela e a Center Shoes. Se tiver o Instagram da My Shoes, dá para confirmar."],
+      q:"Shopping Paris Ciudad del Este" },
+    { n:"VOLTA", walk:true, time:"14h30 – 15h30", title:"Volta pela ponte e Receita Federal",
+      addr:"Aduana paraguaia (~300 m) → ponte → Receita Federal",
+      chips:["Notas fiscais à mão","e-DBV se passou de US$ 500"],
+      notes:["Quem passou da cota vai pelo canal \"bens a declarar\". Depois das 15h a fila de entrada no Brasil piora muito."],
+      q:"Aduana Ciudad del Este Puente de la Amistad" }
+  ];
+
+  const tl = document.getElementById("timeline");
+  tl.innerHTML = STOPS.map(s => `
+    <li class="stop${s.walk?" walk":""}">
+      <div class="pin" aria-hidden="true">${s.n}</div>
+      <div class="stop-body">
+        <div class="stop-top"><span class="time">${s.time}</span><h3>${s.title}</h3></div>
+        <p class="addr">${s.addr}</p>
+        ${s.chips?`<div class="chips">${s.chips.map(c=>`<span class="chip${c==="Opcional"?" warn":""}">${c}</span>`).join("")}</div>`:""}
+        ${s.buy?`<ul class="buy">${s.buy.map(([w,t])=>`<li><span class="who">${w}:</span> ${t}</li>`).join("")}</ul>`:""}
+        ${s.squads?`<div class="squads">${s.squads.map(([h,l])=>`<div class="squad"><h4>${h}</h4><ul class="buy">${l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>`:""}
+        ${s.notes?s.notes.map(t=>`<p>${t}</p>`).join(""):""}
+        <a class="maplink" href="${maps(s.q)}" target="_blank" rel="noopener">Ver no mapa ↗</a>
+      </div>
+    </li>`).join("");
+
+  const wp = ["Nissei Ciudad del Este","Galeria Jebai Center Ciudad del Este","Monalisa Ciudad del Este","Mega Eletronicos Ciudad del Este","Shopping China Ciudad del Este","Shopping Paris Ciudad del Este"];
+  document.getElementById("routeBtn").href = "https://www.google.com/maps/dir/?api=1&travelmode=walking"
+    + "&origin=" + encodeURIComponent("Ponte da Amizade, Foz do Iguaçu")
+    + "&destination=" + encodeURIComponent("Ponte da Amizade, Foz do Iguaçu")
+    + "&waypoints=" + encodeURIComponent(wp.join("|"));
+
+  // ---------- Lista ----------
+  // est: true = não achei preço publicado
+  const PEOPLE = [
+    { id:"joao", name:"João", items:[
+      ["iPhone 17 Pro Max 512GB",1518,"Nissei / Cellshop / Mega",false],
+      ["iPad (o Air M1 saiu de linha; o equivalente é o iPad Air M3 11\" 128GB)",484,"Nissei",false],
+      ["Ray-Ban Meta Gen 2",450,"Nissei / Shopping China",false],
+      ["Notebook Asus Vivobook Pro 15 OLED",1000,"Visão VIP",true],
+      ["Apple Watch Series 9 41mm (restos de estoque; o S11 42mm sai a partir de US$ 330)",250,"Nissei / Mega",false],
+      ["Pijama kigurumi",15,"Shopping China",true],
+      ["Mouse pad gamer 1 m",15,"Atacado Connect / Shopping China",true],
+      ["Fone in-ear (ex.: Redmi Buds 6)",27,"Atacado Connect",false],
+      ["Power bank 50.000 mAh",40,"Atacado Connect",true],
+      ["Mouse Bluetooth (ex.: Logitech Pebble 2)",19,"Atacado Connect / Visão VIP",false],
+      ["Capinhas e películas para iPhone e iPad",25,"Atacado Connect / Cellshop",true]
+    ]},
+    { id:"mae", name:"Mãe do João", items:[
+      ["iPhone 17 Pro Max 256GB",1240,"Nissei / Cellshop / Mega",false],
+      ["Perfume",100,"Monalisa / Nissei / Shopping China",true],
+      ["Skincare e produtos de cabelo",120,"Elegância / Shopping China",true],
+      ["Óculos Ray-Ban feminino",130,"Monalisa / Shopping China",true]
+    ]},
+    { id:"leticia", name:"Letícia", items:[
+      ["Skincare e produtos de beleza",100,"Shopping China / Elegância",true],
+      ["Tênis de primeira linha",120,"Shopping Paris (Casa Angela, TL Sports)",true,true]
+    ]},
+    { id:"bruno", name:"Bruno", items:[
+      ["Óculos Oakley Meta HSTN (nos EUA sai a partir de US$ 399)",469,"Nissei / Monalisa / Shopping China",false],
+      ["Lanterna de cabeça",15,"Shopping China (camping)",true],
+      ["Smartwatch custo-benefício (Redmi Watch 5 Active; o Huawei Watch Fit 4 Pro sai a partir de US$ 201)",28,"Atacado Connect / Mega",false],
+      ["iPhone 15 Pro Max, só abaixo de R$ 3 mil (o swap sai a partir de US$ 655, só eSIM)",655,"Mobile Zone / Mega",false,true]
+    ]},
+    { id:"bruna", name:"Bruna", items:[
+      ["iPhone 17 Pro 256GB, até R$ 6 mil (o 16 Pro 128GB sai a partir de US$ 1.058)",1158,"Nissei / Cellshop / Mega",false],
+      ["Skincare",80,"Shopping China / Mega",true]
+    ]}
+  ];
+  const QUOTA = 500;
+  const KEY = "cde-roteiro-v1";
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
+
+  const fxEl = document.getElementById("fx");
+  if (state.fx) fxEl.value = state.fx;
+
+  const usd = v => "US$ " + Math.round(v).toLocaleString("pt-BR");
+  const brl = v => "R$ " + Math.round(v).toLocaleString("pt-BR");
+  const itemKey = (p,i) => p.id + ":" + i;
+
+  function priceOf(p,i){ const k=itemKey(p,i); return state.price && state.price[k]!=null ? state.price[k] : p.items[i][1]; }
+  function isSkip(p,i){ const k=itemKey(p,i); if (state.skip && k in state.skip) return state.skip[k]; return !!p.items[i][4]; }
+  function isDone(p,i){ return !!(state.done && state.done[itemKey(p,i)]); }
+
+  const peopleEl = document.getElementById("people");
+  function renderPeople(){
+    const openIds = new Set([...peopleEl.querySelectorAll("details[open]")].map(d=>d.dataset.id));
+    const first = !peopleEl.children.length;
+    peopleEl.innerHTML = PEOPLE.map(p => `
+      <details class="person" data-id="${p.id}" ${first||openIds.has(p.id)?"open":""}>
+        <summary>
+          <span class="person-name">${p.name}</span>
+          <span class="person-sum" data-sum="${p.id}"></span>
+          <span class="bar"><i data-bar="${p.id}"></i><s data-mark="${p.id}"></s></span>
+          <span class="status" data-status="${p.id}"></span>
+        </summary>
+        <div class="items">
+          ${p.items.map((it,i)=>`
+            <div class="item" data-row="${itemKey(p,i)}">
+              <input type="checkbox" id="done-${p.id}-${i}" data-done="${itemKey(p,i)}" aria-label="Comprado: ${it[0]}">
+              <div style="min-width:0">
+                <label class="name" for="done-${p.id}-${i}">${it[0]}${it[4]?'<span class="opt">opcional</span>':""}</label>
+                <div class="meta">${it[2]}${it[3]?' · <span class="est">estimativa</span>':""}${it[4]?` · <label><input type="checkbox" id="inc-${p.id}-${i}" data-inc="${itemKey(p,i)}"> incluir na conta</label>`:""}</div>
+              </div>
+              <div class="price"><span>US$</span><input type="number" min="0" step="1" id="price-${p.id}-${i}" data-price="${itemKey(p,i)}" aria-label="Preço em dólar: ${it[0]}"></div>
+            </div>`).join("")}
+        </div>
+      </details>`).join("");
+    PEOPLE.forEach(p => p.items.forEach((it,i)=>{
+      const k = itemKey(p,i);
+      peopleEl.querySelector(`[data-done="${k}"]`).checked = isDone(p,i);
+      peopleEl.querySelector(`[data-price="${k}"]`).value = priceOf(p,i);
+      const inc = peopleEl.querySelector(`[data-inc="${k}"]`);
+      if (inc) inc.checked = !isSkip(p,i);
+    }));
+    update();
+  }
+
+  function update(){
+    const fx = parseFloat(fxEl.value) || 5.25;
+    let gTotal=0, gTax=0, gDone=0, gCount=0;
+    PEOPLE.forEach(p=>{
+      let total=0;
+      p.items.forEach((it,i)=>{
+        const row = peopleEl.querySelector(`[data-row="${itemKey(p,i)}"]`);
+        row.classList.toggle("done", isDone(p,i));
+        row.classList.toggle("skip", isSkip(p,i));
+        if (!isSkip(p,i)) { total += +priceOf(p,i)||0; gCount++; if (isDone(p,i)) gDone++; }
+      });
+      const over = Math.max(0,total-QUOTA), tax = over*0.5;
+      gTotal+=total; gTax+=tax;
+      peopleEl.querySelector(`[data-sum="${p.id}"]`).innerHTML = `${usd(total)}<br><span style="color:var(--muted)">${brl(total*fx)}</span>`;
+      const scale = Math.max(total, QUOTA*1.25);
+      const bar = peopleEl.querySelector(`[data-bar="${p.id}"]`);
+      bar.style.width = (total/scale*100)+"%"; bar.classList.toggle("over", over>0);
+      peopleEl.querySelector(`[data-mark="${p.id}"]`).style.left = (QUOTA/scale*100)+"%";
+      peopleEl.querySelector(`[data-status="${p.id}"]`).innerHTML = over>0
+        ? `<b class="over">${usd(over)} acima da cota</b> · imposto estimado ${usd(tax)} (${brl(tax*fx)}) · total com imposto ${brl((total+tax)*fx)}`
+        : `<b class="ok">Dentro da cota</b> · sobram ${usd(QUOTA-total)}`;
+    });
+    document.getElementById("totals").innerHTML = `
+      <span class="eyebrow">Grupo todo · ${gDone} de ${gCount} itens comprados</span>
+      <div class="totals-grid">
+        <div><span class="addr">Compras</span><span class="big">${usd(gTotal)}</span><span class="addr">${brl(gTotal*fx)}</span></div>
+        <div><span class="addr">Imposto estimado</span><span class="big amber">${usd(gTax)}</span><span class="addr">${brl(gTax*fx)}</span></div>
+        <div><span class="addr">Total com imposto</span><span class="big">${brl((gTotal+gTax)*fx)}</span><span class="addr">Leve em espécie ~${usd(gTotal*1.05)} com folga</span></div>
+      </div>`;
+  }
+
+  peopleEl.addEventListener("input", e=>{
+    const t=e.target;
+    if (t.dataset.price){ state.price=state.price||{}; const v=parseFloat(t.value); state.price[t.dataset.price]=isNaN(v)?0:v; }
+    if (t.dataset.done){ state.done=state.done||{}; state.done[t.dataset.done]=t.checked; }
+    if (t.dataset.inc){ state.skip=state.skip||{}; state.skip[t.dataset.inc]=!t.checked; }
+    save(); update();
+  });
+  fxEl.addEventListener("input", ()=>{ state.fx=fxEl.value; save(); update(); });
+  document.getElementById("resetBtn").addEventListener("click", ()=>{
+    const fx=state.fx; state={}; if(fx) state.fx=fx; save(); peopleEl.innerHTML=""; renderPeople();
+    const m=document.getElementById("resetMsg"); m.hidden=false; setTimeout(()=>{m.hidden=true},2500);
+  });
+  renderPeople();
+
+  // ---------- Lojas ----------
+  const STORES = [
+    ["Nissei","Av. Adrián Jara esq. Regimiento Piribebuy (Shopping Hijazi)","~800 m · 10–12 min","Seg–sáb 6h30–15h45","Apple (revenda autorizada), Ray-Ban/Oakley Meta, perfumes",["Autorizada Apple"],"Garantia de 1 ano. Nem sempre é a mais barata. Aceita Pix."],
+    ["Atacado Connect","Galería Jebai Center, 3º e 4º andar","~800 m · 10–12 min","Seg–sex 6h–16h · sáb até 15h","Acessórios, power bank, fones, mouse, games",[],"Aceita cartão internacional, Pix e dinheiro."],
+    ["Mobile Zone","Galería Jebai Center, 3º andar","~800 m","Seg–sex 7h–16h · sáb até 15h","Celulares (iPhone, Xiaomi)",["Cuidado com swap"],"Aparelho swap ou recondicionado: confira o modelo começando com N ou F."],
+    ["Visão VIP","Lai Lai Center, 4º andar · Av. Adrián Jara 360","~800 m","Seg–sex 6h30–16h · sáb até 15h","Notebooks, periféricos, SSD",[],"É loja de informática, não ótica."],
+    ["Elegância Company","Av. Adrián Jara esq. Abay, Edificio Victoria","~900 m","Horário comercial","Cabelo (uma das maiores seleções de Kérastase), maquiagem, perfume",[],"Especializada em beleza."],
+    ["Monalisa","Av. Monseñor Rodríguez 654 esq. C. A. López","~500 m · 6–8 min","Seg–sáb 7h30–16h30 · dom 8h–12h30","Perfumes de luxo, óculos (Ray-Ban, Oakley, Prada), eletrônicos",["Luxo"],"Atendimento elogiado. Faz promoções de óculos de até 50%. Bistrô no último andar."],
+    ["Cellshop","Av. C. A. López c/ Monseñor Rodríguez (Shopping Ibiza)","~450 m · 7 min","Seg–sex 6h30–17h · sáb até 16h30 · dom 8h–14h","Apple, eletrônicos, acessórios",["Reclame Aqui: não recomendada"],"Diz ter assistência própria. Aceita Pix e parcela no cartão brasileiro. Tem poucas reclamações, mas não responde nenhuma."],
+    ["Mega Eletrônicos","Av. Monseñor Rodríguez esq. Itá Ybaté (Edificio Sarah)","Perto da Aduana · 4–10 min","Seg–sex 7h–16h30 · sáb até 16h · fecha dom","Eletrônicos, Apple, cosméticos",[],"Atacado e varejo. Aceita dólar, real, Pix e cartão."],
+    ["Shopping China","Prédio próprio na Av. Dr. Luis María Argaña, ao lado do Shopping Paris","~300 m · 5–8 min","Todos os dias 7h–20h","Tudo: perfumaria, skincare (CeraVe, La Roche-Posay), camping, roupas, óculos, eletrônicos",["Aberto até tarde"],"A maior loja da fronteira, inaugurada em dez/2025. Há queixas de perfume falso: confira o lacre e o lote."],
+    ["Shopping Paris","Av. Dr. Luis María Argaña casi Eusebio Ayala","~300–500 m · 6–10 min","Seg–sáb 7h–22h · dom 8h–21h","Tênis (Casa Angela, TL Sports, American Footwear), praça de alimentação no 4º andar",[],"Van gratuita desde a ponte."],
+    ["Casa Americana","Av. San Blas 146","~400 m","Seg–sáb 6h30–15h30 · dom 7h–13h","Perfumes, presentes",["Opcional"],"Existe há mais de 50 anos."],
+    ["Nike Factory Store","Shopping Jardín, 2º andar, Av. San Blas km 1–2","1,5–2 km · 20–25 min",  "Horário de shopping","Nike com até 60% de desconto",["Longe: vá de táxi"],"Só vale a pena se a Letícia não achar tênis no Shopping Paris."]
+  ];
+  document.getElementById("stores").innerHTML = STORES.map(([n,a,d,h,w,tags,note])=>`
+    <article class="store">
+      <h3>${n}</h3>
+      <div>${tags.map(t=>`<span class="tag${/Reclame|Cuidado|Longe|Opcional/.test(t)?" warn":""}">${t}</span>`).join("")}</div>
+      <dl class="kv">
+        <dt>Onde</dt><dd>${a}</dd>
+        <dt>A pé</dt><dd>${d}</dd>
+        <dt>Horário</dt><dd>${h}</dd>
+        <dt>Compre</dt><dd>${w}</dd>
+      </dl>
+      <p class="addr">${note}</p>
+      <a class="maplink" href="${maps(n+" Ciudad del Este")}" target="_blank" rel="noopener">Ver no mapa ↗</a>
+    </article>`).join("");
+
+  // ---------- Checklist da véspera ----------
+  const PREP = [
+    "Conferir os preços-alvo no ComprasParaguai e anotar na lista",
+    "RG com menos de 10 anos ou passaporte para cada pessoa (CNH não vale)",
+    "Trocar dólar em espécie em casa de câmbio (total da lista + ~5% de folga)",
+    "Avisar o banco sobre compras no exterior e levar um cartão Wise ou Nomad de reserva",
+    "Preencher a e-DBV para quem vai passar de US$ 500",
+    "Celular carregado, mochila com zíper e sacolas extras",
+    "Ver se não tem operação-padrão da Receita na ponte (notícias de Foz na véspera)"
+  ];
+  const prepEl = document.getElementById("prep");
+  prepEl.innerHTML = PREP.map((t,i)=>`<label><input type="checkbox" id="prep-${i}" data-prep="${i}"> <span>${t}</span></label>`).join("");
+  prepEl.querySelectorAll("[data-prep]").forEach(c=>{ c.checked = !!(state.prep && state.prep[c.dataset.prep]); });
+  prepEl.addEventListener("change", e=>{ const k=e.target.dataset.prep; if(k==null) return; state.prep=state.prep||{}; state.prep[k]=e.target.checked; save(); });
+
+  // ---------- Aba ativa ----------
+  const links=[...document.querySelectorAll("nav.tabs a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+  const onScroll=()=>{
+    let idx=0; secs.forEach((s,i)=>{ if(s.getBoundingClientRect().top<120) idx=i; });
+    links.forEach((a,i)=>a.classList.toggle("on",i===idx));
+  };
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+})();
+</script>
