@@ -256,7 +256,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     <div class="sec-head">
       <span class="eyebrow">Checklist e total de gastos</span>
       <h2>Lista</h2>
-      <p>Os preços vêm preenchidos com o menor valor encontrado no ComprasParaguai (set/2026). Onde está escrito <span style="color:var(--amber);font-weight:600">estimativa</span>, não achei preço publicado. Troque pelo preço real na loja e a conta se refaz sozinha. Marque o quadrado quando comprar. Tudo fica salvo só neste celular.</p>
+      <p>Os preços vêm preenchidos com o menor valor encontrado no ComprasParaguai (set/2026). Cada item tem um link "Comparar no ComprasParaguai" que abre a busca daquele produto: ache o menor preço, digite no campo ao lado e a conta se refaz sozinha. Onde está escrito <span style="color:var(--amber);font-weight:600">estimativa</span>, não achei preço publicado. Troque pelo preço real na loja e a conta se refaz sozinha. Marque o quadrado quando comprar. Tudo fica salvo só neste celular.</p>
     </div>
     <div class="toolbar">
       <div class="field">
@@ -498,6 +498,9 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
   const usd = v => "US$ " + Math.round(v).toLocaleString("pt-BR");
   const brl = v => "R$ " + Math.round(v).toLocaleString("pt-BR");
   const itemKey = (p,i) => p.id + ":" + i;
+  // Busca no ComprasParaguai: usa o nome do item até o primeiro "(" ou ",", com ajustes para itens genéricos
+  const CPQ = { "Capinhas e películas para iPhone e iPad":"capinha iphone 17 pro max", "Tênis de primeira linha":"tenis nike", "Skincare e produtos de cabelo":"kerastase", "Skincare e produtos de beleza":"cerave", "Skincare":"la roche posay", "Perfume":"perfume", "Óculos Ray-Ban feminino":"ray ban feminino", "Smartwatch custo-benefício":"redmi watch 5 active", "Power bank 50":"power bank 50000mah" };
+  const cpLink = name => { const base = name.split(/[(,.]/)[0].trim(); const q = CPQ[base] || base; return "https://www.comprasparaguai.com.br/busca/?q=" + encodeURIComponent(q); };
 
   function priceOf(p,i){ const k=itemKey(p,i); return state.price && state.price[k]!=null ? state.price[k] : p.items[i][1]; }
   function isSkip(p,i){ const k=itemKey(p,i); if (state.skip && k in state.skip) return state.skip[k]; return !!p.items[i][4]; }
@@ -520,7 +523,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
               <input type="checkbox" id="done-${p.id}-${i}" data-done="${itemKey(p,i)}" aria-label="Comprado: ${it[0]}">
               <div style="min-width:0">
                 <label class="name" for="done-${p.id}-${i}">${it[0]}${it[4]?'<span class="opt">opcional</span>':""}</label>
-                <div class="meta">${it[2]}${it[3]?' · <span class="est">estimativa</span>':""}${it[4]?` · <label><input type="checkbox" id="inc-${p.id}-${i}" data-inc="${itemKey(p,i)}"> incluir na conta</label>`:""}</div>
+                <div class="meta"><a href="${cpLink(it[0])}" target="_blank" rel="noopener">Comparar no ComprasParaguai ↗</a> · ${it[2]}${it[3]?' · <span class="est">estimativa</span>':""}${it[4]?` · <label><input type="checkbox" id="inc-${p.id}-${i}" data-inc="${itemKey(p,i)}"> incluir na conta</label>`:""}</div>
               </div>
               <div class="price"><span>US$</span><input type="number" min="0" step="1" id="price-${p.id}-${i}" data-price="${itemKey(p,i)}" aria-label="Preço em dólar: ${it[0]}"></div>
             </div>`).join("")}
