@@ -18,7 +18,7 @@ A versão interativa está em [`roteiro-paraguai.html`](roteiro-paraguai.html). 
 | Hora | Parada | Endereço | O que comprar |
 |---|---|---|---|
 | 7h00 | **Travessia** | Estacione em Vila Portes (Foz). A ponte tem 552 m, 10–15 min a pé | Leve RG com menos de 10 anos ou passaporte (CNH não vale) e dólar em espécie |
-| 7h40 | **1. Nissei** (Shopping Hijazi) | Av. Adrián Jara esq. Regimiento Piribebuy · seg–sáb 6h30–15h45 | **Anotar** o preço dos iPhones, sem comprar ainda. iPad, Apple Watch, Ray-Ban Meta, Oakley Meta; olhar perfumes |
+| 7h40 | **1. Nissei** (Shopping Hijazi) | Av. Adrián Jara esq. Regimiento Piribebuy · seg–sáb 6h30–15h45 | **Anotar** o preço dos iPhones, sem comprar ainda. **iPad Air 5:** comparar com a **Tellecon Cell**, no 4º andar do mesmo prédio (loja 406; fecha às 15h30 e sábado ao meio-dia). Apple Watch, Ray-Ban Meta, Oakley Meta; olhar perfumes |
 | 8h30 | **2. Jebai Center**: iPhones, depois grupo dividido | Jebai Center, Lai Lai Center e Elegância, tudo a ~100 m | **Todos:** comparar e comprar os iPhones na Atacado Connect (3º–4º), Mestre Atacado (4º, loja 3353) ou Mobile Zone. Depois, **Grupo Tech** (João e Bruno): Atacado Connect (acessórios, power bank, mouse, fone, mouse pad, capinhas), Visão VIP (notebook), Mobile Zone (iPhone 15 PM), smartwatch. **Grupo Beleza** (mãe do João, Letícia e Bruna): Elegância Company (cabelo, Kérastase, maquiagem), Aroma Store. Reencontro às 10h15 na Nissei |
 | 10h30 | **3. Monalisa + Cellshop** | Av. Monseñor Rodríguez esq. C. A. López | Perfume e Ray-Ban feminino (Monalisa). Cellshop é o plano B para iPhone e capinhas |
 | 11h30 | **4. Mega Eletrônicos** | Av. Monseñor Rodríguez esq. Itá Ybaté (Ed. Sarah) | Plano C para Apple, o que faltou de eletrônico, cosméticos |
@@ -46,11 +46,11 @@ Todas vendem o mesmo 17 Pro Max americano (A3257, só eSIM); a diferença de pre
 
 ## Lista organizada (preços em US$)
 
-### João (~US$ 3.840)
+### João (~US$ 3.890)
 | Item | Preço | Onde |
 |---|---|---|
 | iPhone 17 Pro Max 512GB | 1.518 | Nissei / Cellshop / Mega |
-| iPad (o Air M1 saiu de linha; o equivalente é o **iPad Air M3 11" 128GB**) | 484 | Nissei |
+| **iPad Air 5 M1 64GB Space Gray (MM9C3LL/A)**. Referência de jan/2026; o Air M3 11" 128GB, mais novo, sai a partir de 484 | ~530 | Tellecon Cell (Hijazi, 4º andar, loja 406) / Nissei / Visão VIP / Prime Shop (Lai Lai, 2º–3º) |
 | Ray-Ban Meta Gen 2 | ~450 | Nissei / Shopping China |
 | Asus Vivobook Pro 15 OLED | ~1.000 *(est.)* | Visão VIP |
 | Apple Watch Series 9 41mm (restos de estoque; o S11 sai a partir de 330) | 235–280 | Nissei / Mega |
@@ -92,7 +92,7 @@ Todas vendem o mesmo 17 Pro Max americano (A3257, só eSIM); a diferença de pre
 ## Pontos de atenção
 
 - **Cota de US$ 500 por pessoa por terra**, que não se soma entre pessoas. Acima disso, o imposto é de 50% sobre o que excedeu, declarado pela e-DBV. Quem não declara e é pego paga mais 50% de multa. Os valores abaixo usam dólar a R$ 5,25:
-  - João: ~US$ 3.340 acima da cota, **~US$ 1.670 de imposto**.
+  - João: ~US$ 3.390 acima da cota, **~US$ 1.700 de imposto**.
   - Mãe do João: ~US$ 545 de imposto.
   - Bruna: ~US$ 370 de imposto. O iPhone 17 Pro sai por ~R$ 6.080 antes do imposto e **passa de R$ 6 mil com o imposto**. Compare com o preço no Brasil.
 - **iPhone 15 Pro Max abaixo de R$ 3 mil é improvável.** O swap mais barato custa US$ 655 (~R$ 3.440), é recondicionado e só aceita eSIM.
