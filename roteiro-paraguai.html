@@ -129,6 +129,15 @@ section{padding-block:36px 8px;display:grid;gap:18px;scroll-margin-top:52px}
 .big{font-family:var(--f-mono);font-weight:700;font-size:1.3rem;font-variant-numeric:tabular-nums}
 .big.amber{color:var(--amber)}
 
+/* Comparativo */
+.cmp{display:grid;gap:10px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}
+.tbl th,.tbl td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tbl .num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
 /* Lojas */
 .stores{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .store{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--surface);display:grid;gap:6px;align-content:start;min-width:0}
@@ -192,7 +201,30 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
 
     <div class="alert">
       <strong>Regra do preço-alvo</strong>
-      <p>Na véspera, veja o menor preço de cada item caro no <a href="https://www.comprasparaguai.com.br" target="_blank" rel="noopener">comprasparaguai.com.br</a> e anote na aba <a href="#lista">Lista e cota</a>. Na Nissei (revenda autorizada Apple), se o preço estiver até uns 3% acima do alvo, compre ali mesmo: a garantia compensa. Se estiver bem mais caro, passe para a Cellshop e a Mega, que estão no caminho de volta.</p>
+      <p>Na véspera, veja o menor preço de cada item caro no <a href="https://www.comprasparaguai.com.br" target="_blank" rel="noopener">comprasparaguai.com.br</a> e anote na aba <a href="#lista">Lista e cota</a>. Para iPhone, anote o preço na Nissei e compare no Jebai Center, a 100 m, onde ficam a Atacado Connect e a Mestre Atacado. Compre onde o aparelho <b>novo e lacrado</b> estiver mais barato. Se a diferença para a Nissei for menor que uns US$ 30, compre na Nissei, que é revenda autorizada Apple.</p>
+    </div>
+
+    <div class="cmp">
+      <h3>Comparativo de iPhone por loja</h3>
+      <p class="addr">Preços encontrados até 27/09/2026. Não consegui abrir os sites das lojas daqui, então as lojas sem preço não puderam ser conferidas.</p>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Loja</th><th>Modelo</th><th class="num">US$</th><th>Leitura</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="3">Menor preço do mercado<br><span class="addr">ComprasParaguai</span></td><td>17 Pro Max 256GB</td><td class="num">1.240</td><td><span class="tag">Piso</span> 34 lojas</td></tr>
+            <tr><td>17 Pro Max 512GB</td><td class="num">1.518</td><td><span class="tag">Piso</span> 16 lojas</td></tr>
+            <tr><td>17 Pro 256GB</td><td class="num">1.200</td><td><span class="tag">Piso</span> 26 lojas</td></tr>
+            <tr><td>Mestre Atacado<br><span class="addr">Jebai, 4º andar, loja 3353</span></td><td>17 Pro Max 256GB</td><td class="num">1.250</td><td><span class="tag">No piso</span></td></tr>
+            <tr><td>Atacado Connect<br><span class="addr">Jebai, 3º e 4º andar</span></td><td>17 Pro Max e 17 Pro, versão americana (LL, só eSIM)</td><td class="num">?</td><td><span class="tag warn">Confira a versão</span> Vende também swap, "somente aparelho" e caixa danificada, que aparecem mais baratos</td></tr>
+            <tr><td>Nissei</td><td>17 Pro Max (A3257) e 17 Pro (A3256)</td><td class="num">?</td><td><span class="tag">Autorizada Apple</span></td></tr>
+            <tr><td>Mega Eletrônicos</td><td>17 Pro Max (A3257 eSIM)</td><td class="num">?</td><td>Mesmo modelo das outras</td></tr>
+            <tr><td rowspan="2">Casa Americana</td><td>17 Pro Max 256GB</td><td class="num">1.859</td><td rowspan="2"><span class="tag warn">Caro</span> Preço da época do lançamento</td></tr>
+            <tr><td>17 Pro 256GB</td><td class="num">1.544</td></tr>
+            <tr><td>Atlântico<br><span class="addr">Jebai</span></td><td>17 Pro Max 512GB</td><td class="num">1.860</td><td><span class="tag warn">Caro</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="addr">Todas essas lojas vendem o mesmo 17 Pro Max americano (A3257, só eSIM). A diferença de preço é margem da loja, não aparelho diferente. Anúncio muito abaixo de US$ 1.240 quase sempre é swap, caixa danificada ou "somente aparelho".</p>
     </div>
 
     <p><a class="btn" id="routeBtn" href="#" target="_blank" rel="noopener">Abrir a rota a pé no Google Maps</a></p>
@@ -214,7 +246,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
     <div class="toolbar">
       <div class="field">
         <label for="fx">Dólar hoje (R$)</label>
-        <input id="fx" type="number" step="0.01" min="1" value="5.25" inputmode="decimal">
+        <input id="fx" type="number" step="0.01" min="1" value="5.27" inputmode="decimal">
       </div>
       <button class="btn ghost" id="resetBtn" type="button">Voltar aos preços da pesquisa</button>
     </div>
@@ -338,13 +370,14 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
       chips:["RG < 10 anos ou passaporte","Dólar em espécie","Preços-alvo anotados"],
       notes:["São 552 m de ponte, 10–15 min a pé pela calçada lateral.","Na Aduana paraguaia, siga em frente pela Av. Monseñor Rodríguez e depois pela Av. Carlos Antonio López até a Av. Adrián Jara (~800 m, 10–12 min). Vamos começar pela loja mais longe."],
       q:"Ponte da Amizade Foz do Iguaçu" },
-    { n:"1", time:"7h40 – 9h00", title:"Nissei (Shopping Hijazi)",
+    { n:"1", time:"7h40 – 8h30", title:"Nissei (Shopping Hijazi)",
       addr:"Av. Adrián Jara esq. Regimiento Piribebuy · seg–sáb 6h30–15h45",
       chips:["Revenda autorizada Apple","Garantia de 1 ano"],
-      buy:[["Todos","iPhones: 17 Pro Max 512GB (João), 17 Pro Max 256GB (mãe do João), 17 Pro ou 16 Pro (Bruna), se estiver no preço-alvo"],["João","iPad, Apple Watch, Ray-Ban Meta Gen 2"],["Bruno","Oakley Meta HSTN (compare com a Monalisa e o Shopping China)"],["Mãe do João","Perfume: veja o preço aqui para comparar"]],
+      buy:[["Todos","iPhones: anote o preço dos três aparelhos, mas não compre ainda. O Jebai, a 100 m, costuma ser mais barato"],["João","iPad, Apple Watch, Ray-Ban Meta Gen 2"],["Bruno","Oakley Meta HSTN (compare com a Monalisa e o Shopping China)"],["Mãe do João","Perfume: veja o preço aqui para comparar"]],
       q:"Nissei Ciudad del Este" },
-    { n:"2", time:"9h00 – 10h15", title:"Quarteirão da Adrián Jara: grupo dividido",
+    { n:"2", time:"8h30 – 10h15", title:"Jebai Center: iPhones, depois grupo dividido",
       addr:"Galería Jebai Center · Lai Lai Center · Elegância Company · tudo a ~100 m da Nissei",
+      buy:[["Todos, primeiro","iPhones: compare Atacado Connect (3º–4º), Mestre Atacado (4º, loja 3353) e Mobile Zone (3º) e compre o novo e lacrado mais barato. Se a diferença para a Nissei for menor que ~US$ 30, volte e compre na Nissei"]],
       squads:[
         ["Grupo Tech: João e Bruno",["Atacado Connect (Jebai, 3º–4º andar): power bank 50.000, mouse Bluetooth, fone in-ear, mouse pad 1 m, capinhas e películas","Visão VIP (Lai Lai, 4º andar): Asus Vivobook Pro 15","Mobile Zone (Jebai, 3º): iPhone 15 Pro Max só se sair abaixo de R$ 3 mil (Bruno)","Smartwatch custo-benefício (Bruno)"]],
         ["Grupo Beleza: mãe do João, Letícia e Bruna",["Elegância Company (Adrián Jara esq. Abay, Ed. Victoria): cabelo (Kérastase), maquiagem, perfume","Aroma Store (Jebai, sala 3060): linhas de cabelo","Anotem os preços de skincare para comparar com o Shopping China"]]
@@ -490,7 +523,7 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
   }
 
   function update(){
-    const fx = parseFloat(fxEl.value) || 5.25;
+    const fx = parseFloat(fxEl.value) || 5.27;
     let gTotal=0, gTax=0, gDone=0, gCount=0;
     PEOPLE.forEach(p=>{
       let total=0;
@@ -537,7 +570,8 @@ footer{padding-block:36px 0;color:var(--muted);font-size:.85rem}
   // ---------- Lojas ----------
   const STORES = [
     ["Nissei","Av. Adrián Jara esq. Regimiento Piribebuy (Shopping Hijazi)","~800 m · 10–12 min","Seg–sáb 6h30–15h45","Apple (revenda autorizada), Ray-Ban/Oakley Meta, perfumes",["Autorizada Apple"],"Garantia de 1 ano. Nem sempre é a mais barata. Aceita Pix."],
-    ["Atacado Connect","Galería Jebai Center, 3º e 4º andar","~800 m · 10–12 min","Seg–sex 6h–16h · sáb até 15h","Acessórios, power bank, fones, mouse, games",[],"Aceita cartão internacional, Pix e dinheiro."],
+    ["Atacado Connect","Galería Jebai Center, 3º e 4º andar","~800 m · 10–12 min","Seg–sex 6h–16h · sáb até 15h","iPhones, acessórios, power bank, fones, mouse, games",["Reclame Aqui: não recomendada"],"Preço competitivo. No Reclame Aqui teve 16 reclamações de mar–ago/2026, sem nenhuma resposta. Existe um site falso copiando a loja, então só confie em atacadoconnect.com. Na loja física, confira se o iPhone é novo e lacrado, e não swap ou caixa danificada."],
+    ["Mestre Atacado","Galería Jebai Center, 4º andar, loja 3353","~800 m · 10–12 min","Horário comercial","iPhones",[],"iPhone 17 Pro Max 256GB anunciado a US$ 1.250, praticamente o menor preço do mercado."],
     ["Mobile Zone","Galería Jebai Center, 3º andar","~800 m","Seg–sex 7h–16h · sáb até 15h","Celulares (iPhone, Xiaomi)",["Cuidado com swap"],"Aparelho swap ou recondicionado: confira o modelo começando com N ou F."],
     ["Visão VIP","Lai Lai Center, 4º andar · Av. Adrián Jara 360","~800 m","Seg–sex 6h30–16h · sáb até 15h","Notebooks, periféricos, SSD",[],"É loja de informática, não ótica."],
     ["Elegância Company","Av. Adrián Jara esq. Abay, Edificio Victoria","~900 m","Horário comercial","Cabelo (uma das maiores seleções de Kérastase), maquiagem, perfume",[],"Especializada em beleza."],
